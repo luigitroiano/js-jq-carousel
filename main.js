@@ -27,4 +27,28 @@ $(function () {
     goForward();
   });
 
+  //funzione per scorrere indietro le img attraverso l' icona freccia sx
+  function goBackward(){
+    var lastImg = $('img.last');
+    var activeImg = $('img.active');
+    var lastDot = $('.fa-circle.last');
+    var activeDot = $('.fa-circle.active');
+    
+    activeImg.removeClass('active');
+    activeDot.removeClass('active');
+
+    if (activeImg.hasClass('first')){
+        lastImg.addClass('active');
+        lastDot.addClass('active');
+    } else {
+        activeImg.prev().addClass('active');
+        activeDot.prev().addClass('active');
+    }
+  }
+  //invoco funzione goBackward
+  var viewPrevious = $('.fa-angle-left');
+  viewPrevious.click(function () { 
+  goBackward();
+  });
+
 });
